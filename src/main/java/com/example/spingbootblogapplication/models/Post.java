@@ -25,10 +25,10 @@ public class Post {
 
     private  LocalDateTime updatedAt;
 
-//    @NotNull
-//    @ManyToOne
-//    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-//    private Account account;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
+    private Account account;
 
 //    @Override
 //    public String toString() {
