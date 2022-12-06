@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog :: Account</title>
+</head>
+<body>
+<div class="container">
+    <a th:href="@{'/'}">Home</a>
+    <div class="account">
+        <h2 th:text="${account.firstName}">Username</h2>
+        <h5 th:text="'First name ' + ${account.firstName}">First Name</h5>
+        <h5 th:text="'Last name ' + ${account.lastName}">Created At</h5>
+        <h5 th:text="'Email ' + ${account.email}">Updated At</h5>
+    </div>
+</div>
+</body>
+</html>
