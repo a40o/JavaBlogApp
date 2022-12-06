@@ -12,10 +12,10 @@ import java.util.Optional;
 public class AccountService {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private AccountRepository accountRepository;
 
     public Account save(Account account) {
         account.setPassword(passwordEncoder.encode(account.getPassword()));

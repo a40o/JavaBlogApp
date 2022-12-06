@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><head>
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +19,9 @@
             <h2><a th:href="@{'/posts/' + ${post.id}}"
                    th:text="${post.title}">Title</a>
             </h2>
-            <h5 th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
+            <h5 th:text="'Written by ' + ${post.account.firstName}">First Name</h5>
             <h5 th:text="'Published on ' + ${post.createdAt}">Created At</h5>
+            <h5 th:text="'Updated At ' + ${post.updatedAt}">Updated At</h5>
             <p th:text="${post.body}">body text</p>
             <br>
         </div>
@@ -30,9 +32,8 @@
         <li><a th:href="@{/login}">Login</a></li>
     </ul>
     <div sec:authorize="isAuthenticated()">
-        <form
-                th:action="@{/logout}"
-                method="POST">
+        <form th:action="@{/logout}"
+              method="POST">
             <div>
                 <label>Hi, <span sec:authentication="name">Username</span></label>
             </div>

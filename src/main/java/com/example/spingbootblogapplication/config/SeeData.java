@@ -26,6 +26,7 @@ public class SeeData implements CommandLineRunner {
     @Autowired
     private AuthorityRepository authorityRepository;
 
+    @Override
     public void run(String... args) throws Exception {
         List<Post> posts = postService.getAll();
 

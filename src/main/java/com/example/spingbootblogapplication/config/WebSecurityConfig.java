@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -25,11 +25,11 @@ public class WebSecurityConfig {
     };
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers(WHITELIST).permitAll()
-                .antMatchers(HttpMethod.GET,"/posts/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/posts/*").permitAll()
                 .anyRequest().authenticated();
 
         http
@@ -38,7 +38,7 @@ public class WebSecurityConfig {
                 .loginProcessingUrl("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/" , true)
+                .defaultSuccessUrl("/", true)
                 .failureUrl("/login?error")
                 .permitAll()
                 .and()

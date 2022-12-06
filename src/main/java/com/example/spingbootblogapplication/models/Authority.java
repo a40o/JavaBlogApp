@@ -15,7 +15,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Authority implements Serializable {
 
-    @Id@Column(length = 16)
+    @Id
+    @Column(length = 16)
     private String name;
 
     @Override
