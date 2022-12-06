@@ -18,7 +18,7 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    private static String[] WHITELIST = {
+    private static final String[] WHITELIST = {
             "/register",
             "/login",
             "/"
