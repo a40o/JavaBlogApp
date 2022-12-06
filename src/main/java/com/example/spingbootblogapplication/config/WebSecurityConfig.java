@@ -20,6 +20,7 @@ public class WebSecurityConfig {
 
     private static String[] WHITELIST = {
             "/register",
+            "/login",
             "/"
     };
 
