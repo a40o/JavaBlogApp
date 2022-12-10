@@ -20,8 +20,8 @@
                    th:text="${post.title}">Title</a>
             </h2>
 
-            <h2><a th:href="@{'/account/' + ${post.account.id}}"
-                   th:text="'Written by ' + ${post.account.firstName}">Title</a>
+            <h2><a th:href="@{'/accounts/' + ${post.account.id}}"
+                   th:text="'Written by ' + ${post.account.firstName}">Author</a>
             </h2>
 
             <p th:text="${post.body}">body text</p>

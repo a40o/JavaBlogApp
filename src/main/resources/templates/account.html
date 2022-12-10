@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +12,8 @@
     <div class="account">
         <h2 th:text="${account.firstName}">Username</h2>
         <h5 th:text="'First name ' + ${account.firstName}">First Name</h5>
-        <h5 th:text="'Last name ' + ${account.lastName}">Created At</h5>
-        <h5 th:text="'Email ' + ${account.email}">Updated At</h5>
+        <h5 th:text="'Last name ' + ${account.lastName}">Last name</h5>
+        <h5 th:text="'Email ' + ${account.email}">Email</h5>
     </div>
 </div>
 </body>
