@@ -1,15 +1,17 @@
 package com.example.spingbootblogapplication.models;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Post {
 
     @Id
@@ -34,10 +36,11 @@ public class Post {
     public String toString() {
         return "Post{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                ", createdAt=" + createdAt +
-                ", modifiedAt=" + updatedAt +
-                '}';
+                ", title='" + title + "'" +
+                ", body='" + body + "'" +
+                ", createdAt='" + createdAt + "'" +
+                ", updatedAt='" + updatedAt + "'" +
+                "}";
     }
+
 }
