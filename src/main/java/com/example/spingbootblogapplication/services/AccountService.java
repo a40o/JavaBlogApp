@@ -33,7 +33,7 @@ public class AccountService {
                 account.setAuthorities(authorities);
             }
         }
-
+        account.setRole(getAccountRole(account));
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         return accountRepository.save(account);
     }
@@ -44,5 +44,13 @@ public class AccountService {
 
     public Optional<Account> getById(Long id) {
         return accountRepository.findById(id);
+    }
+
+    public String getAccountRole(Account account){
+        if(account.getAuthorities().equals("ROLE_ADMIN")) {
+            return "admin";
+        } else {
+            return "user";
+        }
     }
 }

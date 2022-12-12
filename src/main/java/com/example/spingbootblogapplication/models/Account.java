@@ -27,6 +27,8 @@ public class Account {
 
     private String lastName;
 
+    private String role;
+
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
 
@@ -43,7 +45,8 @@ public class Account {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", authorities=" + authorities +
+                ", authorities=" + authorities + '\''+
+                ", role= " + role +
                 '}';
     }
 }
