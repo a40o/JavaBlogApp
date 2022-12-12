@@ -10,10 +10,11 @@
 <div class="container">
     <a th:href="@{'/'}">Home</a>
     <div class="account">
-        <h2 th:text="${account.firstName}">Username</h2>
-        <h5 th:text="'First name ' + ${account.firstName}">First Name</h5>
-        <h5 th:text="'Last name ' + ${account.lastName}">Last name</h5>
-        <h5 th:text="'Email ' + ${account.email}">Email</h5>
+        <h1 th:text="${account.firstName}">Username</h1>
+        <h2 th:text="'First name ' + ${account.firstName}">First Name</h2>
+        <h2 th:text="'Last name ' + ${account.lastName}">Last name</h2>
+        <h2 th:text="'Email ' + ${account.email}">Email</h2>
+        <h2 th:text="'Role ' + ${account.authorities}">Role</h2>
     </div>
 </div>
 </body>
