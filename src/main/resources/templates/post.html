@@ -18,7 +18,7 @@
         </h2>
         <h5 th:text="'Created on ' + ${post.convertDate(post.createdAt)} + ' in: ' + ${post.convertTime(post.createdAt)}">Created At</h5>
         <h5 th:text="'Updated At ' + ${post.convertDate(post.updatedAt)} + ' in: ' + ${post.convertTime(post.updatedAt)}">Updated At</h5>
-        <p th:text="${post.body}">body text</p>
+        <p style="font-size: 20px" th:text="${post.body}">body text</p>
     </div>
     <ul sec:authorize="isAuthenticated()">
         <li><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a></li>

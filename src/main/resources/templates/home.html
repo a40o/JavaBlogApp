@@ -24,7 +24,7 @@
                    th:text="'Written by ' + ${post.account.firstName}">Author</a>
             </h2>
 
-            <p th:text="${post.body}">body text</p>
+            <p style="font-size: 20px" th:text="${post.body}">body text</p>
 
             <h5 th:text="'Created on ' + ${post.convertDate(post.createdAt)} + ' in: ' + ${post.convertTime(post.createdAt)}">Created At</h5>
             <h5 th:text="'Updated At ' + ${post.convertDate(post.updatedAt)} + ' in: ' + ${post.convertTime(post.updatedAt)}">Updated At</h5>
