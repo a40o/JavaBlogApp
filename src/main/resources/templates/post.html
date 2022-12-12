@@ -16,8 +16,8 @@
         <h2><a th:href="@{'/accounts/' + ${post.account.id}}"
                th:text="'Written by ' + ${post.account.firstName}">Author</a>
         </h2>
-        <h5 th:text="'Created on ' + ${post.createdAt}">Created At</h5>
-        <h5 th:text="'Updated At ' + ${post.updatedAt}">Updated At</h5>
+        <h5 th:text="'Created on ' + ${post.convertDate(post.createdAt)} + ' in: ' + ${post.convertTime(post.createdAt)}">Created At</h5>
+        <h5 th:text="'Updated At ' + ${post.convertDate(post.updatedAt)} + ' in: ' + ${post.convertTime(post.updatedAt)}">Updated At</h5>
         <p th:text="${post.body}">body text</p>
     </div>
     <ul sec:authorize="isAuthenticated()">
