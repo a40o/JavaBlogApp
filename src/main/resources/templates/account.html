@@ -9,12 +9,22 @@
 <body>
 <div class="container">
     <a th:href="@{'/'}">Home</a>
+    <hr/>
     <div class="account">
         <h1 th:text="${account.firstName}">Username</h1>
         <h2 th:text="'First name: ' + ${account.firstName}">First Name</h2>
         <h2 th:text="'Last name: ' + ${account.lastName}">Last name</h2>
         <h2 th:text="'Email: ' + ${account.email}">Email</h2>
         <h2 th:text="'Role: ' + ${account.role}">Role</h2>
+    </div>
+</div>
+<hr/>
+<h2>Posts: </h2>
+<div class="post-container">
+    <div class="post" th:each="post : ${account.posts}">
+        <h2><a th:href="@{'/posts/' + ${post.id}}"
+               th:text="${post.title}">Title</a>
+        <p style="font-size: 20px" th:text="${post.body}">body text</p>
     </div>
 </div>
 </body>
