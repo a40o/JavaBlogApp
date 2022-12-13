@@ -26,6 +26,7 @@
                th:text="${post.title}">Title</a></h2>
         <p style="font-size: 20px" th:text="${post.body}">body text</p>
     </div>
+    <li><a th:href="@{'/accounts/' + ${account.id} + '/edit'}">Edit Account</a></li>
 </div>
 </body>
 </html>
