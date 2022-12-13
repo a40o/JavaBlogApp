@@ -23,7 +23,7 @@
 <div class="post-container">
     <div class="post" th:each="post : ${account.posts}">
         <h2><a th:href="@{'/posts/' + ${post.id}}"
-               th:text="${post.title}">Title</a>
+               th:text="${post.title}">Title</a></h2>
         <p style="font-size: 20px" th:text="${post.body}">body text</p>
     </div>
 </div>
