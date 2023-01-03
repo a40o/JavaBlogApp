@@ -6,6 +6,7 @@ import com.example.spingbootblogapplication.services.AccountService;
 import com.example.spingbootblogapplication.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -111,19 +112,21 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/delete")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String deletePost(@PathVariable Long id) {
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String deletePost(@PathVariable Long id, Principal principal) {
 
         // find post by id
         Optional<Post> optionalPost = postService.getById(id);
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
-
-            postService.delete(post);
-            return "redirect:/";
-        } else {
-            return "404";
+            if (post.getAccount().getEmail().equals(principal.getName())) {
+                postService.delete(post);
+                return "redirect:/";
+            } else {
+                return "404";
+            }
         }
+        return "404";
     }
 
 }
