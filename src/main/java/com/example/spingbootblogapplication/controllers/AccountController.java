@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -58,18 +59,21 @@ public class AccountController {
 
     @GetMapping("/accounts/{id}/edit")
     @PreAuthorize("isAuthenticated()")
-    public String getAccountForEdit(@PathVariable Long id, Model model) {
+    public String getAccountForEdit(@PathVariable Long id, Model model, Principal principal) {
 
         // find post by id
         Optional<Account> optionalAccount = accountService.getById(id);
         // if post exist put it in model
         if (optionalAccount.isPresent()) {
             Account account = optionalAccount.get();
-            model.addAttribute("account", account);
-            return "account_edit";
-        } else {
-            return "404";
+            if (account.getEmail().equals(principal.getName())) {
+                model.addAttribute("account", account);
+                return "account_edit";
+            } else {
+                return "404";
+            }
         }
+        return "404";
     }
 }
 
