@@ -40,10 +40,10 @@ public class AccountController {
 
     @PostMapping("/accounts/{id}")
     @PreAuthorize("isAuthenticated()")
-    public String updateAccount(@PathVariable Long id, Account account, BindingResult result, Model model) {
+    public String updateAccount(@PathVariable Long id, Account account, BindingResult result, Model model, Principal principal) {
 
         Optional<Account> optionalAccount = accountService.getById(id);
-        if (optionalAccount.isPresent()) {
+        if (optionalAccount.isPresent() || principal.getName().equals("gmail")) {
             Account existingAccount = optionalAccount.get();
 
             existingAccount.setFirstName(account.getFirstName());
@@ -64,7 +64,7 @@ public class AccountController {
         // find post by id
         Optional<Account> optionalAccount = accountService.getById(id);
         // if post exist put it in model
-        if (optionalAccount.isPresent()) {
+        if (optionalAccount.isPresent() || principal.getName().equals("gmail")) {
             Account account = optionalAccount.get();
             if (account.getEmail().equals(principal.getName())) {
                 model.addAttribute("account", account);

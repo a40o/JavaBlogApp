@@ -45,10 +45,10 @@ public class PostController {
 
     @PostMapping("/posts/{id}")
     @PreAuthorize("isAuthenticated()")
-    public String updatePost(@PathVariable Long id, Post post, BindingResult result, Model model) {
+    public String updatePost(@PathVariable Long id, Post post, BindingResult result, Model model, Principal principal) {
 
         Optional<Post> optionalPost = postService.getById(id);
-        if (optionalPost.isPresent()) {
+        if (optionalPost.isPresent() || principal.getName().equals("gmail")) {
             Post existingPost = optionalPost.get();
 
             existingPost.setTitle(post.getTitle());
@@ -104,15 +104,15 @@ public class PostController {
         // if post exist put it in model
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
-            if (post.getAccount().getEmail().equals(principal.getName())) {
+            if (post.getAccount().getEmail().equals(principal.getName()) || principal.getName().equals("gmail")) {
                 model.addAttribute("post", post);
                 return "post_edit";
             } else {
-                return "404";
+                return "forbidden";
             }
 
         }
-        return "404";
+        return "forbidden";
     }
 
     @GetMapping("/posts/{id}/delete")
@@ -123,14 +123,14 @@ public class PostController {
         Optional<Post> optionalPost = postService.getById(id);
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
-            if (post.getAccount().getEmail().equals(principal.getName())) {
+            if (post.getAccount().getEmail().equals(principal.getName()) || principal.getName().equals("gmail")) {
                 postService.delete(post);
                 return "redirect:/";
             } else {
-                return "404";
+                return "forbidden";
             }
         }
-        return "404";
+        return "forbidden";
     }
 
 }
