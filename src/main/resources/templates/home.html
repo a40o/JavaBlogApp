@@ -40,7 +40,9 @@
         <form th:action="@{/logout}"
               method="POST">
             <div>
-                <label>Hi, <span sec:authentication="name">Username</span></label>
+<!--                <label>Hi, <span sec:authentication="name">Username</span></label>-->
+                <h2> Hi <a th:href="@{'/accounts/' + ${accountId}}"
+                       th:text="${logged.getName()}">Title</a>
             </div>
             <button type="submit">Logout</button>
         </form>
